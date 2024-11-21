@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block extrahead %} 
+<title>Videojuegos Retro</title>
+<link rel="stylesheet" href="{% static '/css/productos.css' %}" >
+{% endblock extrahead%}
+
+{% block content %}
+<h1 class="text-center my-4">Lista de Videojuegos Retro</h1>
+<div class="row">
+    {% for videojuego in videojuegos %}
+    <div class="col-md-3 text-center mb-4">
+        <div class="card h-100">
+            <div class="card-img-top-wrapper" style="height: 200px; overflow: hidden;">
+                {% if videojuego.portada %}
+                    <img src="{{ videojuego.portada.url }}" class="card-img-top imagen_tarjeta" alt="{{ videojuego.titulo }} style="height: 100%; width: auto; object-fit: cover;"">
+                {% else %}
+                    <img src="{% static 'images/default.jpg' %}" class="card-img-top" alt="{{ videojuego.titulo }}">
+                {% endif %}
+            </div>
+                <div class="card-body d-flex flex-column">
+                    <h5 class="card-title">{{ videojuego.titulo|upper }}</h5>
+                    <a href="{% url 'vista_detalle' videojuego.id %}" class="btn btn-primary">Detalles</a>
+                </div>
+        </div>
+    </div>
+    {% endfor %}
+</div>
+{% endblock content%}

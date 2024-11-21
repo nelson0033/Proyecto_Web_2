@@ -1,0 +1,14 @@
+.card{
+    margin-top: 5px;
+    width: 100px;
+    margin-left: 50px;
+}
+
+.imagen_tarjeta{
+    height: 100px;
+}
+
+.estado_label{
+    width: 30%;
+    align-self: center;
+}

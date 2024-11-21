@@ -1,0 +1,69 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block extrahead %} 
+<title>Detalle Producto</title>
+<meta charset="UTF-8">
+    <title>Detalle de {{ videojuego.titulo }}</title>
+    <style>
+        body {
+            margin: 20px;
+        }
+        .container {
+            max-width: 600px;
+            margin: auto;
+            text-align: center;
+        }
+        .detalle {
+            border: 1px solid #ddd;
+            border-radius: 10px;
+            padding: 20px;
+        }
+        .detalle img {
+            width: 100%;
+            height: auto;
+            border-radius: 10px;
+        }
+        h1 {
+            font-size: 24px;
+            margin-bottom: 20px;
+        }
+        p {
+            font-size: 18px;
+            margin: 10px 0;
+        }
+        .volver-btn {
+            display: inline-block;
+            margin-top: 20px;
+            text-decoration: none;
+            background-color: #007BFF;
+            color: white;
+            padding: 10px 20px;
+            border-radius: 5px;
+        }
+    </style>
+{% endblock extrahead%}
+
+{% block content %}
+<h1> Detalle Videojuego</h1>
+<div class="container mt-5">
+    <div class="row">
+        <div class="col-md-8 offset-md-2">
+            <div class="card">
+                <div class="card-body text-center">
+                    <h1 class="card-title">{{ videojuego.titulo }}</h1>
+                    {% if videojuego.portada %}
+                        <img src="{{ videojuego.portada.url }}" class="img-fluid my-3" alt="{{ videojuego.titulo }}" style="height: 200px">
+                    {% endif %}
+                    <p class="card-text"><strong>Año de Lanzamiento:</strong> {{ videojuego.fecha_lanzamiento.year }}</p>
+                    <p class="card-text"><strong>Plataforma:</strong> {{ videojuego.plataforma }}</p>
+                    <p class="card-text"><strong>Género:</strong> {{ videojuego.genero }}</p>
+                    <a href="{% url 'index' %}" class="btn btn-primary">Volver</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock content%}
+
+
